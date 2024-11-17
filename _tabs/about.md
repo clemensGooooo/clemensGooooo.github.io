@@ -4,4 +4,4 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-This is a blog page to cyber security and CTFs.
+This is a blog page about cyber security. For more information I recommend checking out my GitHub page.
