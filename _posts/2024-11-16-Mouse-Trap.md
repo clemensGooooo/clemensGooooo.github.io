@@ -6,7 +6,7 @@ tags: [mousetrap,windows,SharpUp,Registry,forensics,Sysmon,purple,investigate]
 description: This room involves exploiting a windows machine and then investigating the incident which was the exact same exploit we used on to exploit the windows server.
 image:
   path: /assets/blog/Mouse-Trap/Room.png
-  alt: SeeTwo Room image
+  alt: Mouse Trap Room image
 ---
 
 ## Intro

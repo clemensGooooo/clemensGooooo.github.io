@@ -6,7 +6,7 @@ tags: [shop,xss,feedback,easy]
 description: Simple room, just about exploiting a XSS vulnerability
 image:
   path: /assets/blog/The-Sticker-Shop/Room.png
-  alt: Lookup Room image
+  alt: The Sticker Shop Room image
 ---
 
 ## Description
