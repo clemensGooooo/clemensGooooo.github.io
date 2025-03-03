@@ -100,6 +100,8 @@ The response of the server looks promising, it returns that the registration was
 
 If we log back in we are presented with a new site, our URL also changed.
 
+## SSRF
+
 ![](/assets/blog/Rabbit-Store/active.png)
 
 If you try to upload any file it is uploaded with a random name and no extension to `/api/uploads`.
@@ -223,6 +225,8 @@ I now tried accessing this `/docs` API on the internal Express server.
 
 There is a new endpoint we didn't see before the `/api/fetch_messeges_from_chatbot` endpoint.
 
+## SSTI
+
 If you try to access the endpoint with a POST request in Burp, the server will tell you you need a `username` parameter.
 The response from the server looks like a template that is being rendered:
 ```html
@@ -271,6 +275,8 @@ chatbotServer  snap  user.txt
 azrael@forge:~$ wc user.txt 
  1  1 33 user.txt
 ```
+
+## Privilege Escalation
 
 The next thing I checked was the home directory of `rabbitmq`, the broker system, with the exposed port. 
 ```terminal
