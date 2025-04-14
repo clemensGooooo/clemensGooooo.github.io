@@ -5,7 +5,7 @@ categories: [Midnight Flag CTF]
 tags: [crypto, aes,padding_oracle]
 description: Use a AES-CRT padding oracle vulnerability to extract the flag.
 image:
-  path: /assets/blog/Sublocku/logo.svg
+  path: /assets/blog/Sublocku/logo.png
   alt: Midnight Flag CTF logo
 ---
 
