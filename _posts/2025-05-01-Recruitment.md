@@ -9,7 +9,7 @@ image:
   alt: CSCG image
 ---
 
-This is yet another write-up for the challenges of the CSCG 2025 and yet another XSS vulnerability. This is one for the challenge Recruitment, this challenge was created by `TobiNary (BSI)` and rated as Medium.
+This is yet another write-up for the challenges of the CSCG 2025 and yet another XSS vulnerability. This is one for the challenge Recruitment, this challenge was created by `TobiNary (BSI)` and rated as medium.
 
 ## Description
 

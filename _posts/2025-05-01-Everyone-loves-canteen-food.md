@@ -10,7 +10,7 @@ image:
 ---
 
 
-This Write-Up showcases the solution for the challenge titled as "Everyone loves canteen food" within the web category of CSCG 2025. The challenge was created by `Poory` and is rated as Medium.
+This Write-Up showcases the solution for the challenge titled as "Everyone loves canteen food" within the web category of CSCG 2025. The challenge was created by `Poory` and is rated as medium.
 
 ## Intro
 
