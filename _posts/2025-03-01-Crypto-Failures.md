@@ -190,7 +190,7 @@ Be sure to change the cookie to the generated cookie from Python and set the use
 
 ## Brute force the key
 
-To brute force the key, we need to brute force one character at the time and check if the block with all characters known matches the key block. We need to create the last block like this: `AAAAAA:?`, where ? is the first character of the key. Now we can brute force every character of ? and check if the generated block matches the last block, then we can move on to the next charcter and now know the first character of the key. For that we need to remove one A and add the found character to our string. `AAAAA:T?`.
+To brute force the key, we need to brute force one character at the time and check if the block with all characters known matches the key block. We need to create the last block like this: `AAAAAA:?`, where ? is the first character of the key. Now we can brute force every character of ? and check if the generated block matches the last block, then we can move on to the next character and now know the first character of the key. For that we need to remove one A and add the found character to our string. `AAAAA:T?`.
 
 Note: For that to work, we need to be sure that the input fits, we need to be sure to encrypt the exact characters we need.
 
