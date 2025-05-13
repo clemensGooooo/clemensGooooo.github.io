@@ -2,7 +2,7 @@
 title: Security Footage - TryHackMe - Walkthrough
 date: 2025-05-09 10:00:00 +0200
 categories: [TryHackMe]
-tags: [forensics,wireshark]
+tags: [forensics,wireshark,http]
 description: Extract images of a Wireshark capture.
 image:
   path: /assets/blog/Security Footage/Room.png
@@ -20,9 +20,9 @@ The challenge provides us with a network traffic capture file.
 
 ## Inspect the traffic
 
-The file only contains one conversation. The HTTP/TCP conversation is between `192.168.1.100` and `10.0.2.15`. If you inspect the conversation you will see that numerous images are send to through the conversation.
+The file only contains one conversation. The HTTP/TCP conversation is between `192.168.1.100` and `10.0.2.15`. If you inspect the conversation you will see that numerous images (identified by the Content-Type and the magic bytes) are send to through the conversation. This ans the challenge name is a strong indicator that this conversation is a stream of images from a security cam.
 
-![](/assets/blog/Security%20Footage/streampng)
+![](/assets/blog/Security%20Footage/stream.png)
 
 So to get the flag you should apparently extract the images, to do that I first extracted the conversation to a usable file.
 
@@ -80,7 +80,11 @@ mkdir images
 python3 extract.py
 ```
 
-To not go through all images you can generate a video from the images using `ffmpeg`.
+If you know inspect one of the images in the folder you will see some part of the flag on a display.
+
+![](/assets/blog/Security%20Footage/img.jpg)
+
+There will be over 500 such images, so it would be easier to merge the images to a video to read the flag. To do this you can zse `ffmpeg`, which is a handy tool when working with images and videos.
 
 ```terminal
 cat images/* | ffmpeg -framerate 30 -f image2pipe -i - -c:v libx264 -r 30 -pix_fmt yuv420p output.mp4
