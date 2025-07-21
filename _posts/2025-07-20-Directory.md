@@ -11,7 +11,7 @@ image:
 
 ## Introduction
 
-This is a write-up for the challenge Directory on TryHackMe. The challenge is rated as Hard and can be found [here](tryhackme.com/room/directorydfirroom).
+This is a write-up for the challenge Directory on TryHackMe. The challenge is rated as Hard and can be found [here](https://tryhackme.com/room/directorydfirroom).
 
 ## Overview
 
