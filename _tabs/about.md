@@ -9,3 +9,5 @@ Hello and welcome! My name is ClemensGooooo, also known as cle.hack, and you hav
 I currently do mainly TryHackMe and sessional CTF write-ups.
 
 If you'd like to contact me use the mail with button in the side bar below or contact me via Discord @cle.hack.
+
+You can use my [public key](/assets/misc/public.asc) to send me encrypted messages.
