@@ -2,7 +2,7 @@
 title: Event Horizon - TryHackMe - Walkthrough
 date: 2025-08-10 10:00:00 +0200
 categories: [TryHackMe]
-tags: [network,c2,forensics]
+tags: [network,c2,forensics,wireshark,encryption,powershell,Converant]
 description: Investigate a C2 connection and reconstruct the established session.
 image:
   path: /assets/blog/Event Horizon/Room.png

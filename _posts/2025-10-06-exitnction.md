@@ -2,7 +2,7 @@
 title: exitnction - openECSC - Walkthrough
 date: 2025-10-05 10:00:00 +0200
 categories: [openECSC,pwn]
-tags: [pwn,exit,pwntools,openECSC]
+tags: [pwn,exit,pwntools,openECSC,libc]
 description: Exploit exit to get system.
 image:
   path: /assets/blog/exitnction/Logo.png

@@ -2,7 +2,7 @@
 title: CAPTCHApocalypse - TryHackMe - Walkthrough
 date: 2025-06-21 10:00:00 +0200
 categories: [TryHackMe]
-tags: [brute-force,captcha,login,chrome,selenium]
+tags: [brute-force,captcha,login,chrome,selenium,ORC]
 description: Brute force a CAPCHA protected login.
 image:
   path: /assets/blog/CAPTCHApocalypse/Room.png

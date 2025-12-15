@@ -2,7 +2,7 @@
 title: AoC 24' Side Quest - Task 1 - TryHackMe - Walkthrough
 date: 2024-12-28 08:00:00 +0200
 categories: [TryHackMe]
-tags: [hard,wireshark,flask,c2,reverseengineering,forensics]
+tags: [hard,wireshark,flask,c2,reverse engineering,forensics]
 description: Find the keycard and investigate.
 image:
   path: /assets/blog/sidequest24/Room.png

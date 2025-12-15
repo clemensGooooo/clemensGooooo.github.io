@@ -2,7 +2,7 @@
 title: Introduction to Quantum Computing
 date: 2025-08-01 10:00:00 +0200
 categories: [Research]
-tags: [tensor, quantum, cryptography]
+tags: [tensor, quantum, cryptography,spin,qubit,entanglement,superposition]
 description: Explore the achievements in quantum computers and understand the basics of quantum physics needed for quantum computing.
 image:
   path: /assets/blog/Quantum%20Computing/logo.jpg

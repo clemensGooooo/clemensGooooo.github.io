@@ -2,7 +2,7 @@
 title: Everyone loves canteen food - CSCG 2025 - Write-Up
 date: 2025-04-24 10:01:00 +0200
 categories: [Cyber Security Challenge Germany]
-tags: [sqli,insecure_deserialization]
+tags: [sqli,insecure deserialization]
 description: Find a SQL injection vulnerability and a insecure object deserialization vulnerability to get the flag.
 image:
   path: /assets/blog/Everyone loves canteen food/app.png

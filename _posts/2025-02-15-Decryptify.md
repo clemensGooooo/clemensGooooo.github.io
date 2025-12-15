@@ -2,7 +2,7 @@
 title: Decryptify - TryHackMe - Walkthrough
 date: 2025-02-15 10:00:00 +0200
 categories: [TryHackMe]
-tags: [crypto,insecure_randomness,rce, reverseengineering,aes]
+tags: [crypto,insecure randomness,rce, reverse engineering,aes]
 description: This room is the challenge based on the crypto rooms.
 image:
   path: /assets/blog/Decryptify/Room.png

@@ -2,7 +2,7 @@
 title: Rabbit Store - TryHackMe - Walkthrough
 date: 2025-02-22 10:00:00 +0200
 categories: [TryHackMe]
-tags: [injection,rce, privesc,ssrf,expressjs,stti]
+tags: [injection,rce, privesc,ssrf,expressjs,ssti]
 description: You need to exploit some web vulnerabilities and enumerate in order to escalate privileges and gain root. 
 image:
   path: /assets/blog/Rabbit-Store/Room.png
