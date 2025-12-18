@@ -48,7 +48,7 @@ $ ls
 Dockerfile  docker-compose.yml	exitnction  flag.txt
 ```
 
-The `Dockerfile` basically contains the setup which is based on a Ubuntu 24.04 docker container. The `docker-compose.yml` file also lets you build the container just by running the docker compose file.
+The `Dockerfile` basically contains the setup which is based on a Ubuntu 24.04 docker container. Alternatively, the `docker-compose.yml` file also lets you build the container just by running the docker-compose command.
 
 I tried running the executable `exitnction` on my machine, this didn't work, so to continue it is necessary to find the right `libc`, because my machine is missing/not matching that version of `libc`.
 
@@ -75,7 +75,7 @@ After having all the necessary parts to continue I used [`pwninit`](https://gith
 $ pwninit
 ```
 
-This tool is very helpful because it will download the right linker and will simplify the process of debugging the binary. Also it will patch the binary to have the matching `libc` linked to it and not the default one on my machine. After running `pwninit`, you are able to run the patched binary named `exitnction_patched`.
+This tool is very helpful because it will download the right linker and will simplify the process of debugging the binary. Also it will patch the binary to have the matching `libc` linked to it and not the default one on my machine. After running `pwninit`, I was able to run the patched binary named `exitnction_patched`.
 
 ```terminal
 $ ./exitnction_patched 
@@ -92,11 +92,11 @@ Exitnction Mail Client Commands:
 > 
 ```
 
-The binary is actually a *mail client* with some basic options.
+Running the binary shows that it is a *mail client* with some basic options.
 
 ## Binary Recon
 
-The binary is fully protected with all major mitigations enabled: Full RELRO, stack canaries, NX, PIE.
+The binary is fully protected with all major mitigations enabled: **Full RELRO**, **stack canaries**, **NX**, **PIE**.
 
 ```terminal
 $ checksec --file=exitnction
@@ -109,7 +109,7 @@ $ checksec --file=exitnction
     PIE:        PIE enabled
 ```
 
-The application provides three main functions: reading emails, writing emails, and retrieving server information. Finally it contains a help function and a exit function to exit.
+At this stage it is useful to check the binaries features, the application provides three main functions: reading emails, writing emails, and retrieving server information. Lastly, it contains a help function and a exit function.
 
 ```
 > server
@@ -502,7 +502,7 @@ pwndbg> x/10gx &initial
 ```
 > This actually is the buffer modified after chainging the addresses `0x7fc1211cb42f` is `/bin/sh` and `0xe5fe92114a4c86b1` is the encrypted system pointer.
 
-There are several different flavors of exit functions stored. A flavor just means if for example the function is stored with an argument...
+There are several different flavors of exit functions stored. A flavor just describes how a function is stored, for ex. with an argument...
 
 ```c
   enum {
