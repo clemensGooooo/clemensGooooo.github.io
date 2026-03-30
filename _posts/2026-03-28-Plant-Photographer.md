@@ -40,13 +40,13 @@ The web app likely uses the `server` argument to generate a URL in a format like
 
 ![](/assets/blog/Plant%20Photographer/ssrf.png)
 
-Surprisingly, the request already returns the first flag as a HTTP header. Moreover, we retrieve additional information: The server uses [pycurl](http://pycurl.io/) to process requests.
+Surprisingly, the request already returns the first flag as a HTTP header. Moreover, we retrieve additional information: The server uses [pycurl](https://pycurl.io/) to process requests.
 
 To explore the SSRF vulnerability further, we can also try to set the scheme by specifying `http://` before the IP. 
 
 ![](/assets/blog/Plant%20Photographer/ssrf2.png)
 
-With that we have control over the scheme used by `pycurl`. [The website of *pycurl*](http://pycurl.io/docs/latest/index.html#about-libcurl) provides us with all the supported protocols which can be used for further exploitation. 
+With that we have control over the scheme used by `pycurl`. [The website of *pycurl*](https://pycurl.io/docs/latest/index.html#about-libcurl) provides us with all the supported protocols which can be used for further exploitation. 
 
 To check the capabilities of the Python library we specify `file` as the scheme and check if we are able to access `/etc/shadow` or `/etc/passwd`.
 
